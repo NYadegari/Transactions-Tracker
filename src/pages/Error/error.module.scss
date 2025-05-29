@@ -1,0 +1,50 @@
+.errorPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .img {
+    background-image: url("/src/assets/error.jpg");
+    width: 400px;
+    height: 400px;
+    border-radius: 8px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.content {
+  background-color: rgba($color: rgb(234, 146, 146), $alpha: 0.5);
+  padding: 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 400px;
+  height: 400px;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .link {
+    background-color: black;
+    color: white;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

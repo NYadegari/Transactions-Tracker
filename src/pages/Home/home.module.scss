@@ -1,0 +1,58 @@
+.addContainer {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  // flex-wrap: wrap;
+  gap: 8px 16px;
+  height: 100%;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+
+  select {
+    color: rgb(42, 42, 98);
+    font-weight: 800;
+    width: 80%;
+    height: 38px;
+    padding: 2px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    &:hover {
+      border: 2px solid rgb(11, 87, 217);
+      scale: 1.03;
+      height: 40px;
+    }
+  }
+  input {
+    color: rgb(42, 42, 98);
+    font-weight: 800;
+    width: 80%;
+    height: 38px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    &:hover {
+      border: 2px solid rgb(11, 87, 217);
+      scale: 1.03;
+      height: 40px;
+    }
+  }
+}
+
+
+button {
+  width: 80%;
+  background-color: rgb(46, 46, 146);
+  height: 50px;
+  color: white;
+  font-weight: 800;
+  border: 2px solid white;
+  border-radius: 8px;
+  &:hover {
+    scale: 1.01;
+    background-color: rgb(19, 19, 151);
+  }
+}

@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  height: 60px;
+  min-height: 60px;
+  background: linear-gradient(to right, rgb(19, 6, 57), rgb(47, 70, 164));
+  position: sticky;
+  border-radius: 10px;
+  top: 15px;
+  margin-left: 8px;
+  margin-right: 8px;
+  z-index: 10;
+  padding: 24px 40px;
+
+  h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+.navItems {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+}
+
+
+.Wallet {
+  position: relative;
+  
+  .badge {
+    // padding: px;
+    position: absolute;
+    right: 3px;
+    bottom: 19px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.navIcons {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 14px;
+}
+

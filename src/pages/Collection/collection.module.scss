@@ -1,0 +1,16 @@
+.collectionContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 8px;
+  padding: 16px;
+}
+.collectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+  background-color: white;
+  margin: 16px 20px 0 20px;
+  padding: 16px;
+  border-radius: 8px;
+}
