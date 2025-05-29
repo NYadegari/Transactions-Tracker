@@ -8,7 +8,7 @@ const Navbar = () => {
   const {auth} = useContext(AuthContext);
   return (
     <div className={styles.container}>
-      <h1>Expense Tracking</h1>
+      <h1>Transaction Tracker</h1>
       <nav>
         <ul className={styles.navItems}>
           <li>
