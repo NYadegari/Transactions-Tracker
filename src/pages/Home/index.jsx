@@ -59,7 +59,6 @@ const HomePage = () => {
         <option value="">Expense</option>
         <option value="Income">Income</option>
       </select>
-
       <input
         type="text"
         placeholder="Title of transaction..."

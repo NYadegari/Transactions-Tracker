@@ -1,0 +1,54 @@
+.body {
+    margin-top: 120px;
+    // background: linear-gradient(to left, rgb(225, 228, 232), rgb(141, 141, 157));
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 91vh;
+    height: fit-content;
+    align-self: center;
+    justify-self: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    input {
+        background-color: rgb(187, 193, 201);
+        border-radius: 5px;
+        margin: 2px 0 7px 0;
+        width: 80vh;
+        padding: 5px;
+        height: 5vh;
+        border-bottom: 2px solid blue;
+        &:hover {
+            height: 5.4vh;
+            width: 81vh;
+        }
+    }
+}
+
+h1 {
+    align-self: center;
+    font-weight: bolder;
+    font-size: 35px;
+    margin-bottom: 12px;
+    color: rgb(3, 49, 89);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    button {
+        width: 50vh;
+        height: 6vh;
+        align-self: center;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
+

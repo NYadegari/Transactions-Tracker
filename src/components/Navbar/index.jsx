@@ -3,6 +3,7 @@ import styles from "./navbar.module.scss";
 import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext"
 import { IoLogInOutline } from "react-icons/io5";
+import { FaUserCheck } from "react-icons/fa6";
 
 const Navbar = () => {
   const {auth} = useContext(AuthContext);
@@ -44,7 +45,8 @@ const Navbar = () => {
         </ul>
       </nav>
       <div className={styles.navIcons}>
-        {auth ? <div>{auth.user}</div> :
+        {auth ? 
+        <div className="flex"><div className="text-lg text-white cursor-auto">{auth.user}</div><FaUserCheck color="white" className={styles.userIcon}/></div> :
          <Link to="/login">
           <IoLogInOutline fontSize={34} color="white"/>
          </Link>
