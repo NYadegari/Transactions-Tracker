@@ -6,6 +6,7 @@ import styles from './login.module.scss'
 import * as Yup from "yup"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom'
 
 const validationSchema = Yup.object({
   username: Yup.string().required().min(3),
@@ -14,7 +15,8 @@ const validationSchema = Yup.object({
 })
 
 const Login = () => {
-    const { setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
+    const navigate = useNavigate();
     const { register , handleSubmit , formState: {errors , isValid} } = useForm({resolver: yupResolver(validationSchema)});
 
   return (
@@ -23,8 +25,8 @@ const Login = () => {
         <div className={styles.form}>
           <form action=""
           onSubmit={handleSubmit((value) => {
-            console.log("value", value, errors);
             setAuth({ user: value.username, email: value.email})
+            navigate("/");
           })}
           >
             <div className={styles.inputs}>
@@ -38,7 +40,7 @@ const Login = () => {
               <input {...register("password")} id='password' type="password"/>
               {errors.password && <span className='text-red-700 text-xs'>{errors.password.message}</span>}
             </div>
-            <button     onClick={()=>console.log("clicked")}>Submit</button>
+            <button onClick={()=>console.log("clicked")}>Submit</button>
           </form>
         </div>
     </div>
