@@ -28,7 +28,9 @@
 }
 
 .empty {
-    font-size: 20px;
+    font-size: 25px;
+    color: white;
+    text-align: center;
 }
 
 .removeBtn {
@@ -59,3 +61,28 @@
     color: rgb(91, 86, 86);
 }
 
+.searchSelect {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.selectCat {
+    width: 30%;
+    height: 35px;
+    border-radius: 6px;
+}
+
+.search {
+    padding: 5px;
+    width: 70%;
+    border-radius: 6px;
+    height: 35px;
+    
+}
+
+.searchSelect input:focus , select:focus {
+  outline: none;
+  border: 2px solid #4a90e2;
+  box-shadow: 0 0 5px #4a90e2;
+}
