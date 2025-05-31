@@ -1,0 +1,12 @@
+.exportBtn {
+    width: 100%;
+    background-color: rgb(53, 97, 199);
+    border: none;
+    position: sticky;
+    bottom: 5px;
+    margin-top: 20px;
+    transition: 1s ease;
+    &:hover {
+        border: 2px solid white;
+    }
+}

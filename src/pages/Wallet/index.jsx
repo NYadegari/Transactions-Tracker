@@ -2,6 +2,7 @@
 import React from "react";
 import { useWallet } from "../../context/WalletContext";
 import styles from './Wallet.module.scss'
+import ExportButton from "../../components/ExportButton";
 
 const Wallet = () => {
   const { transactions, removeTransaction } = useWallet();
@@ -23,13 +24,12 @@ const Wallet = () => {
                 <p className={styles.kind}>{trans.kind}</p>
                 <p className={styles.category}>- {trans.category}</p>
               </div>
-             
               <button className={styles.removeBtn} onClick={() => removeTransaction(index)}>Remove</button>
-
             </li>
           ))}
         </ul>
       )}
+      <ExportButton data={transactions} />
     </div>
   );
 };

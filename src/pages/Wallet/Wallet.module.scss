@@ -2,7 +2,7 @@
     padding: 40px;
     li {
         border-radius: 8px;
-        background: linear-gradient(to left, rgb(218, 216, 225), rgb(167, 169, 179));
+        background: linear-gradient(to left, rgb(218, 216, 225), rgb(204, 205, 213));
         padding: 8px;
     }
     h1 {
@@ -14,7 +14,7 @@
     }
     ul {
         display: grid;
-        grid-template-columns: repeat(5, 1fr); /* 2 equal columns */
+        grid-template-columns: repeat(5, 1fr);
         gap: 10px;
     }
 }
@@ -36,6 +36,7 @@
     width: 100%;
     height: 35px;
     background-color: rgb(180, 62, 62);
+    transition: 0.5s ease;
     &:hover {
         background-color: rgb(173, 30, 30);
         border: none;
@@ -57,3 +58,4 @@
 .date {
     color: rgb(91, 86, 86);
 }
+
