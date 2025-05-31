@@ -4,9 +4,14 @@ import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext"
 import { IoLogInOutline } from "react-icons/io5";
 import { FaUserCheck } from "react-icons/fa6";
+import LoadingSpinner from "../LoadingSpinner";
+import { useNavigate } from "react-router-dom";
+import { useLoading } from "../../context/LoadingContext";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const {auth} = useContext(AuthContext);
+
   return (
     <div className={styles.container}>
       <h1>Transaction Tracker</h1>

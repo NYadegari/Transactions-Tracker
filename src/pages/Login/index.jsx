@@ -6,6 +6,7 @@ import styles from './login.module.scss'
 import * as Yup from "yup"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useLoading } from '../../context/LoadingContext'
 import { useNavigate } from 'react-router-dom'
 
 const validationSchema = Yup.object({
@@ -18,6 +19,15 @@ const Login = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
     const { register , handleSubmit , formState: {errors , isValid} } = useForm({resolver: yupResolver(validationSchema)});
+    const {loading, setLoading} = useLoading();
+    
+      const handleNavigate = (path) => {
+        setLoading(true);
+        setTimeout(() => {
+          navigate(path);
+          setLoading(false);
+        }, 500);
+      };
 
   return (
     <div className={styles.body}>
@@ -27,6 +37,7 @@ const Login = () => {
           onSubmit={handleSubmit((value) => {
             setAuth({ user: value.username, email: value.email})
             navigate("/");
+            handleNavigate("/");
           })}
           >
             <div className={styles.inputs}>
@@ -40,7 +51,7 @@ const Login = () => {
               <input {...register("password")} id='password' type="password"/>
               {errors.password && <span className='text-red-700 text-xs'>{errors.password.message}</span>}
             </div>
-            <button onClick={()=>console.log("clicked")}>Submit</button>
+            <button>Submit</button>
           </form>
         </div>
     </div>
