@@ -12,9 +12,8 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     if (menuState === "show") {
-      // Delay the removal of menu to allow hiding instantly without animation
-      setMenuState(""); // reset first
-      setTimeout(() => setMenuState("hide"), 1); // slight delay avoids conflict with transition
+      setMenuState("");
+      setTimeout(() => setMenuState("hide"), 1);
     } else {
       setMenuState("show");
     }
