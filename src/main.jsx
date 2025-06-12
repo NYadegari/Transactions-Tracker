@@ -6,7 +6,8 @@ import { router } from "./routes/index.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { LoadingProvider, useLoading } from "./context/LoadingContext.jsx";
 import LoadingSpinner from "./components/LoadingSpinner/index.jsx";
-
+import { Provider } from "react-redux";
+import { store } from "./redux/index.js";
 
 const AppWrapper = () => {
   const { loading } = useLoading();
@@ -20,10 +21,12 @@ const AppWrapper = () => {
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <LoadingProvider>
-      <AuthProvider>
-        <AppWrapper />
-      </AuthProvider>
-    </LoadingProvider>
+    <Provider store={store}>
+      <LoadingProvider>
+        <AuthProvider>
+          <AppWrapper />
+        </AuthProvider>
+      </LoadingProvider>
+    </Provider>
   </StrictMode>
 );

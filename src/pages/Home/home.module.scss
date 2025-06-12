@@ -4,13 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  // flex-wrap: wrap;
   gap: 8px 16px;
   height: 100%;
-
-  @media screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
 
   select {
     color: rgb(42, 42, 98);
@@ -20,12 +15,14 @@
     padding: 2px;
     margin-bottom: 5px;
     border-radius: 5px;
+
     &:hover {
       border: 2px solid rgb(11, 87, 217);
       scale: 1.03;
       height: 40px;
     }
   }
+
   input {
     color: rgb(42, 42, 98);
     font-weight: 800;
@@ -34,14 +31,27 @@
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 5px;
+
     &:hover {
       border: 2px solid rgb(11, 87, 217);
       scale: 1.03;
       height: 40px;
     }
   }
-}
 
+  @media screen and (max-width: 600px) {
+    padding: 20px;
+    gap: 12px;
+    align-items: stretch;
+
+    select,
+    input,
+    button {
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+}
 
 button {
   width: 80%;
@@ -51,8 +61,15 @@ button {
   font-weight: 800;
   border: 2px solid white;
   border-radius: 8px;
+
   &:hover {
     scale: 1.01;
     background-color: rgb(19, 19, 151);
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
   }
 }

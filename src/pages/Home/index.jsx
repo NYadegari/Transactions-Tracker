@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import styles from "./home.module.scss";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useWallet } from "../../context/WalletContext";
+import { useDispatch } from "react-redux";
+import { walletActions } from "../../redux/slices/walletSlice";
+
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+
   const [Kind, setKind] = useState("Expense");
   const [Title, setTitle] = useState("");
   const [Amount, setAmount] = useState("");
@@ -18,35 +22,35 @@ const HomePage = () => {
   ]);
   const [selectedCategory, setSelectedCategory] = useState("Food");
   const [customCategoryInput, setCustomCategoryInput] = useState("");
-  const { addTransaction } = useWallet();
+
 
   const handleAddToWallet = () => {
-  let finalCategory = selectedCategory;
+    let finalCategory = selectedCategory;
 
-  if (selectedCategory === "Others" && customCategoryInput.trim()) {
-    const newCategory = customCategoryInput.trim();
-    if (!categoryOptions.includes(newCategory)) {
-      setCategoryOptions([...categoryOptions.slice(0, -1), newCategory, "Others"]);
+    if (selectedCategory === "Others" && customCategoryInput.trim()) {
+      const newCategory = customCategoryInput.trim();
+      if (!categoryOptions.includes(newCategory)) {
+        setCategoryOptions([...categoryOptions.slice(0, -1), newCategory, "Others"]);
+      }
+      finalCategory = newCategory;
+      setSelectedCategory(newCategory);
+      setCustomCategoryInput("");
     }
-    finalCategory = newCategory;
-    setSelectedCategory(newCategory);
-    setCustomCategoryInput("");
-  }
 
-  const transaction = {
-    kind: Kind,
-    title: Title,
-    amount: parseFloat(Amount),
-    date: selectedDate,
-    category: finalCategory,
+    const transaction = {
+      kind: Kind,
+      title: Title,
+      amount: parseFloat(Amount),
+      date: selectedDate.toISOString(),
+      category: finalCategory,
+    };
+
+    dispatch(walletActions.addTrans(transaction));
+
+    setTitle("");
+    setAmount("");
+    setKind("");
   };
-
-  addTransaction(transaction);
-
-  setTitle("");
-  setAmount("");
-  setKind("");
-};
 
 
   return (
@@ -71,10 +75,10 @@ const HomePage = () => {
         onChange={(e) => setAmount(e.target.value)}
         value={Amount}
       />
-      <DatePicker
-        selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
-        dateFormat="yyyy/MM/dd"
+      <input
+        type="date"
+        value={selectedDate.toISOString().split("T")[0]} 
+        onChange={(e) => setSelectedDate(new Date(e.target.value))}
         className={styles.date}
       />
       <select

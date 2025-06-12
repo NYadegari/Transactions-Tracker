@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./Diagram.module.scss"
-import { useWallet } from '../../context/WalletContext';
+import { useSelector } from 'react-redux';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
@@ -11,7 +11,7 @@ import { format } from 'date-fns';
 const COLORS = ['#8884d8', '#8dd1e1', '#ffc658', '#a4de6c', '#d0ed57', '#ff6b6b', '#82ca9d', '#ffb3b3'];
 
 const Diagram = () => {
-  const { transactions } = useWallet();
+  const transactions = useSelector((state) => state.wallet.transactions || []);
 
   const chartDataMap = new Map();
 
@@ -54,7 +54,7 @@ const Diagram = () => {
           <Line type="monotone" dataKey="expense" stroke="#ff6b6b" strokeWidth={3} name="Expense" />
         </LineChart>
       </ResponsiveContainer>
-      <ResponsiveContainer width="90%" height={300}>
+      <ResponsiveContainer width="90%" height={300} className={styles.diag}>
           <PieChart>
             <Pie
               data={pieData}

@@ -1,12 +1,19 @@
 import React, { useState, useMemo } from "react";
-import { useWallet } from "../../context/WalletContext";
 import styles from './Wallet.module.scss';
 import ExportButton from "../../components/ExportButton";
+import { walletActions } from "../../redux/slices/walletSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 
 const Wallet = () => {
-  const { transactions, removeTransaction } = useWallet();
+  const dispatch = useDispatch();
+  const transactions = useSelector((state) => state.wallet.transactions || []);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
 
   const categories = useMemo(() => {
     const unique = new Set(transactions.map(t => t.category));
@@ -17,9 +24,15 @@ const Wallet = () => {
     return transactions.filter((t) => {
       const matchTitle = t.title.toLowerCase().includes(searchTerm.toLowerCase());
       const matchCategory = selectedCategory ? t.category === selectedCategory : true;
-      return matchTitle && matchCategory;
+
+      const transDate = new Date(t.date);
+      const matchStartDate = startDate ? transDate >= new Date(startDate) : true;
+      const matchEndDate = endDate ? transDate <= new Date(endDate) : true;
+
+      return matchTitle && matchCategory && matchStartDate && matchEndDate;
     });
-  }, [transactions, searchTerm, selectedCategory]);
+  }, [transactions, searchTerm, selectedCategory, startDate, endDate]);
+
 
   return (
     <div className={styles.wallet}>
@@ -43,6 +56,26 @@ const Wallet = () => {
             <option key={index} value={cat}>{cat}</option>
           ))}
         </select>
+        <div className={styles.dateFilter}>
+          <label>
+            From:
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className={styles.dateInput}
+            />
+          </label>
+          <label>
+            To:
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className={styles.dateInput}
+            />
+          </label>
+        </div>
       </div>
 
       {filteredTransactions.length === 0 ? (
@@ -60,7 +93,7 @@ const Wallet = () => {
               </div>
               <button
                 className={styles.removeBtn}
-                onClick={() => removeTransaction(index)}
+                onClick={() => dispatch(walletActions.removeTrans(index))}
               >
                 Remove
               </button>
